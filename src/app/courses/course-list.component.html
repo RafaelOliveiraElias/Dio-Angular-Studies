@@ -16,7 +16,7 @@
       <th>Code</th>
       <th>Release Date</th>
       <th>Rating</th>
-      <th>options</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +29,9 @@
       <td>
         <app-star [rating]="course.rating"></app-star>
       </td>
-      <td></td>
+      <td>
+        <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary">Edit</a>
+      </td>
     </tr>
   </tbody>
 </table>

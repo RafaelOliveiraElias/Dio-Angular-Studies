@@ -1,6 +1,27 @@
 import { Injectable } from "@angular/core";
 import { Course } from "./course";
 
+@Injectable({
+  providedIn: 'root'
+})
+export class CourseService {
+
+  retrieveAll(): Course[] {
+    return COURSES;
+  }
+
+  retrieveById(id: number) {
+    return COURSES.find((courseInterator: Course) => courseInterator.id === id );
+  }
+
+  save(course: Course): void {
+    if(course.id) {
+      const index = COURSES.findIndex((courseIntereator: Course) => courseIntereator.id === course.id);
+      COURSES[index]= course;
+    }
+  }
+}
+
 var COURSES: Course[] = [
   {
       id: 1,
@@ -58,16 +79,3 @@ var COURSES: Course[] = [
       imageUrl: '/assets/images/animations.png',
   }
 ];
-
-@Injectable({
-  providedIn: 'root'
-})
-
-
-export class CourseService {
-
-  retrieveAll(): Course[] {
-    return COURSES;
-  }
-
-}
